@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MJM Associates — Professional Tax & Advisory Practice | Nacharam, Hyderabad</title>
+    <meta name="description" content="MJM Associates is a professional tax, advisory, and accounting practice based in Nacharam, Hyderabad. Providing clear, straightforward advisory for individuals and local businesses.">
+    
+    <!-- Open Graph Metadata -->
+    <meta property="og:title" content="MJM Associates — Professional Tax & Advisory Practice">
+    <meta property="og:description" content="Straightforward tax advisory, GST filing, and accounting support in Nacharam, Hyderabad.">
+    <meta property="og:type" content="website">
+
+    <!-- Google Local SEO JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AccountingService",
+      "name": "MJM Associates",
+      "alternateName": "MJM Associate Nacharam",
+      "telephone": "+91-9030030331",
+      "priceRange": "₹₹",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Door No. 4-6-18/1, Savarkar Nagar, Opp. Forest Integrator Pvt Ltd, Baba Nagar Mainroad",
+        "addressLocality": "Nacharam, Secunderabad",
+        "addressRegion": "Telangana",
+        "postalCode": "500076",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 17.4265,
+        "longitude": 78.5582
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          "opens": "09:00",
+          "closes": "21:00"
+        }
+      ],
+      "areaServed": ["Nacharam", "Habsiguda", "Moulali", "Mallapur", "Boduppal", "Hyderabad"]
+    }
+    </script>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            bg: '#FBFBF9',
+                            surface: '#F4F4F0',
+                            text: '#111110',
+                            muted: '#666660',
+                            border: '#E5E5E0',
+                            accent: '#3D3D3A'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['Newsreader', 'Georgia', 'serif'],
+                        sans: ['Plus Jakarta Sans', '-apple-system', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="antialiased selection:bg-brand-text selection:text-brand-bg flex flex-col min-h-screen">
+
+    <!-- Top Real-time Status Bar -->
+    <div class="border-b border-brand-border py-2.5 px-6 md:px-12 text-xs font-mono text-brand-muted flex justify-between items-center">
+        <div class="flex items-center gap-3">
+            <span class="inline-block w-2 h-2 rounded-full bg-emerald-600" id="status-dot"></span>
+            <span id="status-text">Checking Practice Hours...</span>
+        </div>
+        <div class="hidden sm:flex items-center gap-4">
+            <a href="#admin" class="hover:text-brand-text transition-colors">[ADMIN PORTAL]</a>
+            <span>4-6-18/1, Savarkar Nagar, Nacharam, Hyderabad — 500076</span>
+        </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="sticky top-0 z-50 bg-brand-bg/90 backdrop-blur-md border-b border-brand-border">
+        <div class="max-w-6xl mx-auto px-6 md:px-12 h-20 flex items-center justify-between">
+            <a href="#" class="group flex flex-col">
+                <span class="text-lg font-medium tracking-tight group-hover:text-brand-muted transition-colors">MJM Associates</span>
+                <span class="text-[10px] font-mono tracking-widest text-brand-muted uppercase">Tax & Advisory · Nacharam</span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-brand-muted">
+                <a href="#about" class="hover:text-brand-text transition-colors">About</a>
+                <a href="#services" class="hover:text-brand-text transition-colors">Services</a>
+                <a href="#approach" class="hover:text-brand-text transition-colors">Approach</a>
+                <a href="#location" class="hover:text-brand-text transition-colors">Location</a>
+                <a href="#contact" class="hover:text-brand-text transition-colors">Contact</a>
+            </nav>
+
+            <div class="hidden md:flex items-center gap-3">
+                <button onclick="openFeedbackModal()" class="text-xs font-mono border border-brand-border px-3 py-2 hover:bg-brand-surface transition-all">
+                    FEEDBACK
+                </button>
+                <a href="tel:+919030030331" class="text-xs font-mono bg-brand-text text-brand-bg px-4 py-2 hover:bg-brand-accent transition-all">
+                    +91 90300 30331
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="md:hidden text-sm font-mono text-brand-text py-2" aria-label="Toggle Navigation">
+                [MENU]
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden border-b border-brand-border bg-brand-bg px-6 py-6 flex-col gap-4 text-sm font-medium">
+            <a href="#about" class="py-2 border-b border-brand-border/40 hover:text-brand-muted">About Practice</a>
+            <a href="#services" class="py-2 border-b border-brand-border/40 hover:text-brand-muted">Services</a>
+            <a href="#approach" class="py-2 border-b border-brand-border/40 hover:text-brand-muted">Our Approach</a>
+            <a href="#location" class="py-2 border-b border-brand-border/40 hover:text-brand-muted">Office Location</a>
+            <a href="#contact" class="py-2 border-b border-brand-border/40 hover:text-brand-muted">Get in Touch</a>
+            <a href="#admin" class="py-2 font-mono text-xs hover:text-brand-muted">[ADMIN LOGIN]</a>
+            <div class="pt-4 border-t border-brand-border flex flex-col gap-2">
+                <a href="tel:+919030030331" class="text-center py-2.5 bg-brand-text text-brand-bg text-xs font-mono">CALL +91 90300 30331</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section class="max-w-6xl mx-auto px-6 md:px-12 pt-20 pb-24 border-b border-brand-border">
+            <div class="max-w-3xl">
+                <div class="text-xs font-mono tracking-widest text-brand-muted uppercase mb-6 flex items-center gap-2">
+                    <span class="w-2 h-[1px] bg-brand-muted"></span>
+                    <span>MJM ASSOCIATES · NACHARAM, HYDERABAD</span>
+                </div>
+                
+                <h1 class="serif-title text-4xl sm:text-5xl md:text-6xl font-normal tracking-tight text-brand-text leading-[1.12] mb-8">
+                    Professional support, without unnecessary complexity.
+                </h1>
+
+                <p class="text-lg md:text-xl text-brand-muted font-light leading-relaxed mb-10 max-w-2xl">
+                    A dedicated local tax consulting and advisory practice serving individuals, traders, and businesses in Nacharam and across Hyderabad.
+                </p>
+
+                <div class="flex flex-wrap items-center gap-4 text-sm">
+                    <a href="#contact" class="bg-brand-text text-brand-bg px-6 py-3.5 font-medium hover:bg-brand-accent transition-colors">
+                        Talk to us
+                    </a>
+                    <a href="#location" class="border border-brand-border px-6 py-3.5 font-medium hover:border-brand-text transition-colors">
+                        Visit our office
+                    </a>
+                </div>
+
+                <div class="mt-16 pt-8 border-t border-brand-border/50 flex flex-wrap items-center gap-y-2 gap-x-8 text-xs font-mono text-brand-muted">
+                    <div>LOCATION: Savarkar Nagar, Nacharam X Road</div>
+                    <div>LANDMARK: Opp. Forest Integrator / Near Post Office</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Practice Principles -->
+        <section class="border-b border-brand-border py-16 bg-brand-surface/40">
+            <div class="max-w-6xl mx-auto px-6 md:px-12">
+                <div class="text-xs font-mono tracking-widest text-brand-muted uppercase mb-10">
+                    [PRACTICE PRINCIPLES]
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div class="border-l border-brand-border pl-6">
+                        <div class="text-xs font-mono text-brand-muted mb-2">01 / CLEAR</div>
+                        <h2 class="text-base font-semibold mb-2">Simple Communication</h2>
+                        <p class="text-xs text-brand-muted leading-relaxed">Tax compliance explained clearly without confusing legal jargon.</p>
+                    </div>
+
+                    <div class="border-l border-brand-border pl-6">
+                        <div class="text-xs font-mono text-brand-muted mb-2">02 / PRACTICAL</div>
+                        <h2 class="text-base font-semibold mb-2">Real-world Solutions</h2>
+                        <p class="text-xs text-brand-muted leading-relaxed">Direct assistance structured strictly around your business requirements.</p>
+                    </div>
+
+                    <div class="border-l border-brand-border pl-6">
+                        <div class="text-xs font-mono text-brand-muted mb-2">03 / PROFESSIONAL</div>
+                        <h2 class="text-base font-semibold mb-2">Attentive Engagement</h2>
+                        <p class="text-xs text-brand-muted leading-relaxed">Every document and engagement is reviewed with thorough attention to detail.</p>
+                    </div>
+
+                    <div class="border-l border-brand-border pl-6">
+                        <div class="text-xs font-mono text-brand-muted mb-2">04 / LOCAL</div>
+                        <h2 class="text-base font-semibold mb-2">Established Presence</h2>
+                        <p class="text-xs text-brand-muted leading-relaxed">Accessible office located on Baba Nagar Road in Nacharam.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="max-w-6xl mx-auto px-6 md:px-12 py-24 border-b border-brand-border">
+            <div class="flex flex-col md:flex-row justify-between items-start mb-16 gap-6">
+                <div>
+                    <div class="text-xs font-mono tracking-widest text-brand-muted uppercase mb-3">[CORE PRACTICE AREAS]</div>
+                    <h2 class="serif-title text-3xl md:text-4xl font-normal">What we assist with</h2>
+                </div>
+                <p class="text-sm text-brand-muted max-w-md leading-relaxed">
+                    Reliable tax consulting and advisory workflows structured for individuals, proprietary firms, and growing businesses.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-brand-border border border-brand-border">
+                <div class="bg-brand-bg p-8 flex flex-col justify-between hover:bg-brand-surface/30 transition-colors">
+                    <div>
+                        <div class="text-xs font-mono text-brand-muted mb-4">SERVICE / 01</div>
+                        <h3 class="serif-title text-2xl font-normal mb-3">Income Tax Advisory & Filing</h3>
+                        <p class="text-sm text-brand-muted leading-relaxed mb-6">
+                            Assistance with Income Tax Return (ITR) preparation, tax assessment advisory, and annual tax planning for salaried individuals and local enterprise owners.
+                        </p>
+                    </div>
+                    <div class="text-xs font-mono text-brand-text flex items-center gap-2">
+                        <span>ITR-1 TO ITR-4</span> · <span>ASSESSMENT SUPPORT</span>
+                    </div>
+                </div>
+
+                <div class="bg-brand-bg p-8 flex flex-col justify-between hover:bg-brand-surface/30 transition-colors">
+                    <div>
+                        <div class="text-xs font-mono text-brand-muted mb-4">SERVICE / 02</div>
+                        <h3 class="serif-title text-2xl font-normal mb-3">GST Setup & Compliance</h3>
+                        <p class="text-sm text-brand-muted leading-relaxed mb-6">
+                            End-to-end guidance for Goods and Services Tax (GST) registration, monthly/quarterly return filings (GSTR-1, GSTR-3B), and compliance reconciliation.
+                        </p>
+                    </div>
+                    <div class="text-xs font-mono text-brand-text flex items-center gap-2">
+                        <span>REGISTRATION</span> · <span>RETURNS & RECONCILIATION</span>
+                    </div>
+                </div>
+
+                <div class="bg-brand-bg p-8 flex flex-col justify-between hover:bg-brand-surface/30 transition-colors">
+                    <div>
+                        <div class="text-xs font-mono text-brand-muted mb-4">SERVICE / 03</div>
+                        <h3 class="serif-title text-2xl font-normal mb-3">TDS & Accounting Support</h3>
+                        <p class="text-sm text-brand-muted leading-relaxed mb-6">
+                            Tax Deducted at Source (TDS) calculation, quarterly statement filings, and ongoing bookkeeping support to ensure your business ledgers remain accurate.
+                        </p>
+                    </div>
+                    <div class="text-xs font-mono text-brand-text flex items-center gap-2">
+                        <span>TDS FILINGS</span> · <span>BOOKKEEPING ASSISTANCE</span>
+                    </div>
+                </div>
+
+                <div class="bg-brand-bg p-8 flex flex-col justify-between hover:bg-brand-surface/30 transition-colors">
+                    <div>
+                        <div class="text-xs font-mono text-brand-muted mb-4">SERVICE / 04</div>
+                        <h3 class="serif-title text-2xl font-normal mb-3">PAN & Business Registrations</h3>
+                        <p class="text-sm text-brand-muted leading-relaxed mb-6">
+                            Facilitation of PAN card documentation, business entity registration support, and local statutory filings for new and existing establishments.
+                        </p>
+                    </div>
+                    <div class="text-xs font-mono text-brand-text flex items-center gap-2">
+                        <span>PAN FACILITATION</span> · <span>ENTITY REGISTRATIONS</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Practice -->
+        <section id="about" class="max-w-6xl mx-auto px-6 md:px-12 py-24 border-b border-brand-border">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-start">
+                <div class="md:col-span-4">
+                    <div class="text-xs font-mono tracking-widest text-brand-muted uppercase mb-3">[ABOUT PRACTICE]</div>
+                    <h2 class="serif-title text-3xl md:text-4xl font-normal">Rooted in Nacharam. Dedicated to clarity.</h2>
+                </div>
+
+                <div class="md:col-span-8 text-brand-muted space-y-6 text-base font-light leading-relaxed">
+                    <p class="text-brand-text font-normal text-lg">
+                        MJM Associates operates as a local professional practice based in Nacharam, Hyderabad, focused on tax consulting, statutory returns, and financial documentation.
+                    </p>
+                    <p>
+                        Managing tax compliance and financial records shouldn't require navigating endless bureaucratic hurdles. Our practice works directly with client requirements, delivering clear advice and timely filings without unnecessary friction.
+                    </p>
+                    <p>
+                        Whether you need assistance with annual income tax returns, setting up your business for GST, or resolving documentation queries, we provide personalized and dependable attention to every file.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Approach Section -->
+        <section id="approach" class="max-w-6xl mx-auto px-6 md:px-12 py-24 border-b border-brand-border">
+            <div class="text-xs font-mono tracking-widest text-brand-muted uppercase mb-12">[OUR APPROACH]</div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="border-t border-brand-border pt-6">
+                    <span class="text-xs font-mono text-brand-muted block mb-4">STEP / 01</span>
+                    <h3 class="serif-title text-2xl font-normal mb-3">1. Initial Discussion</h3>
+                    <p class="text-sm text-brand-muted leading-relaxed">
+                        Reach out via phone, WhatsApp, or drop by our Nacharam office to discuss your tax or documentation requirement.
+                    </p>
+                </div>
+
+                <div class="border-t border-brand-border pt-6">
+                    <span class="text-xs font-mono text-brand-muted block mb-4">STEP / 02</span>
+                    <h3 class="serif-title text-2xl font-normal mb-3">2. Document Review</h3>
+                    <p class="text-sm text-brand-muted leading-relaxed">
+                        We review the necessary paperwork, verify statutory details, and outline a straightforward plan to complete the filing.
+                    </p>
+                </div>
+
+                <div class="border-t border-brand-border pt-6">
+                    <span class="text-xs font-mono text-brand-muted block mb-4">STEP / 03</span>
+                    <h3 class="serif-title text-2xl font-normal mb-3">3. Timely Execution</h3>
+                    <p class="text-sm text-brand-muted leading-relaxed">
+                        We handle the submission, return filing, or registration process accurately, keeping you informed at every step.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Location Section -->
+        <section id="location" class="max-w-6xl mx-auto px-6 md:px-12 py-24 border-b border-brand-border">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+                <div class="md:col-span-5">
+                    <div class="text-xs font-mono tracking-widest text-brand-muted uppercase mb-3">[VISIT OUR OFFICE]</div>
+                    <h2 class="serif-title text-3xl md:text-4xl font-normal mb-6">Find us in Nacharam.</h2>
+                    
+                    <div class="space-y-6 text-sm text-brand-muted">
+                        <div>
+                            <div class="font-mono text-xs text-brand-text uppercase mb-1">OFFICE ADDRESS</div>
+                            <p class="text-brand-text font-normal">
+                                Door No. 4-6-18/1, Savarkar Nagar,<br>
+                                Opp. Forest Integrator Pvt Ltd, Baba Nagar Mainroad,<br>
+                                Nacharam, Hyderabad, Telangana — 500076
+                            </p>
+                            <p class="text-xs text-brand-muted mt-1">(Near Post Office, Nacharam X Road)</p>
+                        </div>
+
+                        <div>
+                            <div class="font-mono text-xs text-brand-text uppercase mb-1">PRACTICE HOURS</div>
+                            <p>Monday – Saturday: 09:00 AM – 09:00 PM</p>
+                            <p class="text-xs text-brand-muted">Lunch Break: 01:00 PM – 02:00 PM</p>
+                            <p class="text-xs text-brand-muted">Sunday: Closed</p>
+                        </div>
+
+                        <div>
+                            <div class="font-mono text-xs text-brand-text uppercase mb-1">CONTACT NUMBERS</div>
+                            <p class="text-brand-text font-medium">+91 90300 30331</p>
+                            <p class="text-brand-text font-medium">+91 93468 33140</p>
+                        </div>
+
+                        <div class="pt-4">
+                            <a href="https://maps.google.com/?q=4-6-18/1+Savarkar+Nagar+Nacharam+Hyderabad" target="_blank" rel="noopener noreferrer" class="inline-block bg-brand-text text-brand-bg px-5 py-3 text-xs font-mono hover:bg-brand-accent transition-colors">
+                                OPEN IN GOOGLE MAPS →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:col-span-7 bg-brand-surface border border-brand-border p-8 flex flex-col justify-between min-h-[360px]">
+                    <div class="flex justify-between items-start text-xs font-mono text-brand-muted">
+                        <span>NACHARAM LOCALITY GRID</span>
+                        <span>500076</span>
+                    </div>
+
+                    <div class="my-auto py-12 space-y-4">
+                        <div class="border-b border-brand-border/60 pb-3 flex justify-between items-center text-xs">
+                            <span class="font-mono text-brand-muted">LANDMARK 01</span>
+                            <span class="text-brand-text font-medium">Nacharam X Road / Post Office</span>
+                        </div>
+                        <div class="border-b border-brand-border/60 pb-3 flex justify-between items-center text-xs">
+                            <span class="font-mono text-brand-muted">LANDMARK 02</span>
+                            <span class="text-brand-text font-medium">Opposite Forest Integrator Pvt Ltd</span>
+                        </div>
+                        <div class="border-b border-brand-border/60 pb-3 flex justify-between items-center text-xs">
+                            <span class="font-mono text-brand-muted">MAIN ROAD</span>
+                            <span class="text-brand-text font-medium">Baba Nagar Mainroad, Savarkar Nagar</span>
+                        </div>
+                    </div>
+
+                    <div class="text-[11px] font-mono text-brand-muted text-right">
+                        [LAT-LONG REFERENCE: NACHARAM, SECUNDERABAD DIVISION]
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Inquiry & Contact Section -->
+        <section id="contact" class="max-w-6xl mx-auto px-6 md:px-12 py-24 border-b border-brand-border">
+            <div class="max-w-2xl">
+                <div class="text-xs font-mono tracking-widest text-brand-muted uppercase mb-3">[CONNECT WITH US]</div>
+                <h2 class="serif-title text-4xl md:text-5xl font-normal tracking-tight mb-6">Let's talk.</h2>
+                <p class="text-brand-muted text-base font-light leading-relaxed mb-10">
+                    Have a question regarding income tax filing, GST setup, or documentation? Get in touch with our Nacharam office directly.
+                </p>
+
+                <div class="flex flex-wrap gap-4 mb-16">
+                    <a href="tel:+919030030331" class="bg-brand-text text-brand-bg px-6 py-3.5 text-sm font-medium hover:bg-brand-accent transition-colors">
+                        Call +91 90300 30331
+                    </a>
+                    <a href="https://wa.me/919030030331?text=Hello%20MJM%20Associates,%20I%20have%20an%20inquiry%20regarding%20your%20services." target="_blank" rel="noopener noreferrer" class="border border-brand-border px-6 py-3.5 text-sm font-medium hover:border-brand-text transition-colors">
+                        WhatsApp Message
+                    </a>
+                </div>
+
+                <!-- Direct Inquiry Form -->
+                <form id="inquiry-form" class="space-y-6 border-t border-brand-border pt-12">
+                    <div class="text-xs font-mono text-brand-muted mb-4">[DIRECT INQUIRY FORM — SAVES TO FREE DATABASE & NOTIFIES TEAM]</div>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <label for="name" class="block text-xs font-mono uppercase text-brand-muted mb-2">Your Name</label>
+                            <input type="text" id="name" required class="w-full bg-brand-bg border border-brand-border px-4 py-3 text-sm focus:outline-none focus:border-brand-text">
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-xs font-mono uppercase text-brand-muted mb-2">Phone Number</label>
+                            <input type="tel" id="phone" required class="w-full bg-brand-bg border border-brand-border px-4 py-3 text-sm focus:outline-none focus:border-brand-text">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="service" class="block text-xs font-mono uppercase text-brand-muted mb-2">Service Requirement</label>
+                        <select id="service" class="w-full bg-brand-bg border border-brand-border px-4 py-3 text-sm focus:outline-none focus:border-brand-text">
+                            <option value="Income Tax Return (ITR)">Income Tax Advisory & Filing (ITR)</option>
+                            <option value="GST Registration & Filing">GST Registration & Filing</option>
+                            <option value="TDS & Bookkeeping">TDS & Bookkeeping Support</option>
+                            <option value="PAN / Business Registration">PAN Card & Business Registration</option>
+                            <option value="General Consultation">General Tax Advisory Consultation</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="message" class="block text-xs font-mono uppercase text-brand-muted mb-2">Brief Message</label>
+                        <textarea id="message" rows="3" class="w-full bg-brand-bg border border-brand-border px-4 py-3 text-sm focus:outline-none focus:border-brand-text" placeholder="Tell us how we can help..."></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full sm:w-auto bg-brand-text text-brand-bg px-8 py-3.5 text-xs font-mono hover:bg-brand-accent transition-colors">
+                        SUBMIT & SEND WHATSAPP ALERT →
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Integrated Admin Portal View -->
+        <section id="admin" class="max-w-6xl mx-auto px-6 md:px-12 py-24">
+            <div class="border border-brand-border bg-brand-surface p-8">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 pb-6 border-b border-brand-border gap-4">
+                    <div>
+                        <div class="text-xs font-mono text-brand-muted uppercase mb-1">[SECURE DASHBOARD]</div>
+                        <h2 class="serif-title text-3xl font-normal">Practice Inquiries & Feedback</h2>
+                    </div>
+                    <div id="auth-status" class="text-xs font-mono text-brand-muted">
+                        Not Logged In
+                    </div>
+                </div>
+
+                <!-- Admin Auth Box -->
+                <div id="admin-login-box" class="max-w-md my-8 space-y-4">
+                    <p class="text-sm text-brand-muted">Log in to view live customer inquiries and export data.</p>
+                    <input type="email" id="admin-email" placeholder="Admin Email" class="w-full bg-brand-bg border border-brand-border px-4 py-2.5 text-sm">
+                    <input type="password" id="admin-password" placeholder="Enter Password" class="w-full bg-brand-bg border border-brand-border px-4 py-2.5 text-sm">
+                    <button onclick="loginAdmin()" class="bg-brand-text text-brand-bg px-6 py-2 text-xs font-mono">LOGIN TO BACKEND</button>
+                </div>
+
+                <!-- Admin Control Content (Hidden by default until logged in) -->
+                <div id="admin-content" class="hidden space-y-8">
+                    <div class="flex flex-wrap justify-between items-center gap-4">
+                        <div class="flex items-center gap-4 text-xs font-mono">
+                            <button onclick="fetchEnquiries()" class="bg-brand-text text-brand-bg px-4 py-2">REFRESH FEED</button>
+                            <button onclick="exportToCSV()" class="border border-brand-border px-4 py-2 bg-brand-bg hover:bg-brand-surface">EXPORT CSV</button>
+                            <button onclick="logoutAdmin()" class="border border-red-300 text-red-600 px-4 py-2 bg-brand-bg hover:bg-red-50">LOGOUT</button>
+                        </div>
+                        <input type="text" id="search-input" onkeyup="filterEnquiries()" placeholder="Search by name, phone or service..." class="bg-brand-bg border border-brand-border px-4 py-2 text-xs font-mono w-64">
+                    </div>
+
+                    <!-- Database Results List -->
+                    <div id="enquiries-container" class="space-y-4">
+                        <p class="text-xs font-mono text-brand-muted">Loading database entries...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Feedback Modal -->
+    <div id="feedback-modal" class="fixed inset-0 bg-brand-text/40 backdrop-blur-sm z-50 hidden flex items-center justify-center p-6">
+        <div class="bg-brand-bg border border-brand-border p-8 max-w-lg w-full space-y-6">
+            <div class="flex justify-between items-center border-b border-brand-border pb-4">
+                <span class="text-xs font-mono text-brand-muted">[CLIENT FEEDBACK]</span>
+                <button onclick="closeFeedbackModal()" class="text-xs font-mono">[CLOSE]</button>
+            </div>
+            
+            <form id="feedback-form" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-mono uppercase mb-1">Your Name</label>
+                    <input type="text" id="fb-name" required class="w-full border border-brand-border px-3 py-2 text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-mono uppercase mb-1">Rating (1 to 5 Stars)</label>
+                    <select id="fb-rating" class="w-full border border-brand-border px-3 py-2 text-sm">
+                        <option value="5">★★★★★ (5/5) Excellent</option>
+                        <option value="4">★★★★☆ (4/5) Very Good</option>
+                        <option value="3">★★★☆☆ (3/5) Satisfactory</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-mono uppercase mb-1">Feedback Comments</label>
+                    <textarea id="fb-comment" rows="3" required class="w-full border border-brand-border px-3 py-2 text-sm"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-brand-text text-brand-bg py-3 text-xs font-mono">SUBMIT FEEDBACK</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-brand-border py-12 bg-brand-bg">
+        <div class="max-w-6xl mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-start md:items-center gap-8 text-xs font-mono text-brand-muted">
+            <div>
+                <div class="text-brand-text font-medium text-sm mb-1">MJM Associates</div>
+                <p>4-6-18/1, Savarkar Nagar, Nacharam, Hyderabad, Telangana 500076</p>
+            </div>
+
+            <div class="flex flex-wrap gap-6">
+                <a href="#about" class="hover:text-brand-text">About</a>
+                <a href="#services" class="hover:text-brand-text">Services</a>
+                <a href="#location" class="hover:text-brand-text">Location</a>
+                <a href="#contact" class="hover:text-brand-text">Contact</a>
+                <a href="#admin" class="hover:text-brand-text">[Admin]</a>
+            </div>
+
+            <div>
+                © 2026 MJM Associates. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Firebase SDKs MUST load FIRST -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+
+    <!-- Custom Modular Application Scripts SECOND -->
+    <script src="js/firebase.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/admin.js"></script>
+
+</body>
+</html>
